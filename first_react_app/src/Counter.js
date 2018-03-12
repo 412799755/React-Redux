@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component} from 'react';
 
 const buttonStyle = {
   margin: '10px'
@@ -41,13 +41,21 @@ class Counter extends Component {
   }
 
   onClickIncrementButton() {
-    this.setState({count: this.state.count + 1});
+    this.updateCount(true);
   }
 
   onClickDecrementButton() {
-    this.setState({count: this.state.count - 1});
+    this.updateCount(false);
   }
 
+  updateCount(isIncrement) {
+        const previousValue = this.state.count;
+        const newValue = isIncrement ? previousValue + 1 : previousValue - 1;
+
+        this.setState({count: newValue})
+        this.props.onUpdate(newValue, previousValue)
+    }
+//判断是否有必要重新渲染
   shouldComponentUpdate(nextProps, nextState) {
     return (nextProps.caption !== this.props.caption) ||
            (nextState.count !== this.state.count);
