@@ -25,6 +25,7 @@ class ControlPanel extends Component {
         <Counter onUpdate={this.onCounterUpdate} caption="First"/>
         <Counter onUpdate={this.onCounterUpdate} caption="Second" initValue={this.initValues[1]} />
         <Counter onUpdate={this.onCounterUpdate} caption="Third" initValue={this.initValues[2]} />
+          <hr/>
           <div>Total Count: {this.state.sum}</div>
       </div>
     );
